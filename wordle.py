@@ -1,5 +1,5 @@
 #spent_letters = []
-#required_letters = []
+#misplaced_letters = []
 #c0 = None
 #c1 = None
 #c2 = None
@@ -7,14 +7,14 @@
 #c4 = None
 
 spent_letters = []
-required_letters = []
+misplaced_letters = {'a': 1 }
 c0 = None
 c1 = None
 c2 = None
 c3 = None
 c4 = None
 
-with open("/Users/jim.odonnell/Downloads/words.txt", 'r') as file:
+with open("./words.txt", 'r') as file:
     for word in file:
         word = word.strip().lower()
         word_letters = set(word)
@@ -32,11 +32,19 @@ with open("/Users/jim.odonnell/Downloads/words.txt", 'r') as file:
             invalid_word = True
         if None != c4 and word[4] != c4:
             invalid_word = True
-       
-        for letter in required_letters:
+
+        if invalid_word:
+            continue
+
+        for letter in misplaced_letters.keys():
             if not letter in word_letters:
                 invalid_word = True
                 break
+            illegal_position = misplaced_letters[letter]
+            if word[illegal_position] == letter:
+                invalid_word = True
+                break
+
         for letter in spent_letters:
             if letter in word_letters:
                 invalid_word = True
