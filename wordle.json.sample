@@ -1,0 +1,8 @@
+{
+    "spent_letters": ["w","h","e","d","u","m","p","c","s","b","o","f"],
+    "misplaced_letters": {
+        "t": [2,3,4],
+        "a": [3]
+    },
+    "discovered_letters": ["t","a","","","y"]
+}
