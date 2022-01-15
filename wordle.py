@@ -13,6 +13,7 @@ with open("./wordle.json", 'r') as config_file:
     discovered_letters = json_config['discovered_letters']
 
 with open("./words.txt", 'r') as dictionary_file:
+    possibility_count = 0
     for word in dictionary_file:
         word = word.strip().lower()
         word_letters = set(word)
@@ -48,4 +49,6 @@ with open("./words.txt", 'r') as dictionary_file:
 
         if not invalid_word:
             print(word)
-
+            possibility_count += 1
+    
+    print("{count} possibilities".format(count = possibility_count))
