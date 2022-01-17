@@ -15,7 +15,7 @@ with open("./wordle.json", 'r') as config_file:
 with open("./words.txt", 'r') as dictionary_file:
     possibility_count = 0
     for word in dictionary_file:
-        word = word.strip().lower()
+        word = word.strip()
         word_letters = set(word)
         invalid_word = False
 
