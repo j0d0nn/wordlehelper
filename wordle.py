@@ -12,6 +12,7 @@ with open("./wordle.json", 'r') as config_file:
     misplaced_letters = json_config['misplaced_letters']
     discovered_letters = json_config['discovered_letters']
 
+best_guess = None
 with open("./words.txt", 'r') as dictionary_file:
     possibility_count = 0
     for word in dictionary_file:
@@ -48,7 +49,11 @@ with open("./words.txt", 'r') as dictionary_file:
                 break
 
         if not invalid_word:
+            if None == best_guess:
+                best_guess = word
             print(word)
             possibility_count += 1
     
     print("{count} possibilities".format(count = possibility_count))
+    if None != best_guess:
+        print("Best guess: {word}".format(word = best_guess))
