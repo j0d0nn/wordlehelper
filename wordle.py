@@ -2,15 +2,18 @@
 
 import json
 
+WORD_SIZE = 5
+BLANK = '_'
+
 spent_letters = []
 misplaced_letters = {}
-discovered_letters = ['','','','','']
+discovered_letters = [BLANK] * WORD_SIZE
 
 with open("./wordle.json", 'r') as config_file:
     json_config = json.load(config_file)
-    spent_letters = json_config['spent_letters']
+    spent_letters = [c for c in json_config['spent_letters']]
     misplaced_letters = json_config['misplaced_letters']
-    discovered_letters = json_config['discovered_letters']
+    discovered_letters = [c for c in json_config['discovered_letters']]
 
 best_guess = None
 with open("./words.txt", 'r') as dictionary_file:
@@ -20,12 +23,12 @@ with open("./words.txt", 'r') as dictionary_file:
         word_letters = set(word)
         invalid_word = False
 
-        if len(word) != 5:
+        if len(word) != WORD_SIZE:
             continue
 
-        for i in range(5):
+        for i in range(WORD_SIZE):
             required_letter = discovered_letters[i]
-            if required_letter != '':
+            if required_letter != BLANK:
                 if word[i] != required_letter:
                     invalid_word = True
                     break;

@@ -1,6 +1,6 @@
 {
-    "spent_letters": [],
+    "spent_letters": "",
     "misplaced_letters": {
     },
-    "discovered_letters": ["","","","",""]
+    "discovered_letters": "_____"
 }
