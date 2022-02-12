@@ -15,10 +15,6 @@ with open("./wordle.json", 'r') as config_file:
     misplaced_letters = json_config['misplaced_letters']
     discovered_letters = [c for c in json_config['discovered_letters']]
 
-print (spent_letters)
-print (misplaced_letters)
-print (discovered_letters)
-
 best_guess = None
 with open("./words.txt", 'r') as dictionary_file:
     possibility_count = 0
